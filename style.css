@@ -21,8 +21,8 @@ header {
 }
 
 #logo-img {
-  height: 70px;
-  width: 400px;
+  height: 120px;
+  width: auto;
   float: left;
 }
 
@@ -72,7 +72,7 @@ header {
 }
 
 section {
-  padding: 0 19%;
+  padding: 0 8%;
 }
 
 .hero-text h5 {
@@ -223,6 +223,12 @@ section {
 
   .navlist.open {
     display: none;
+  }
+
+  #logo-img {
+    padding-bottom: 40px;
+
+    /* width: auto; */
   }
 }
 
