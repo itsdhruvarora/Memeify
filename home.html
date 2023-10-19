@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memeify - Meme Generator</title>
+    <!--CSS-->
+    <link rel="stylesheet" href="style.css" />
+    <!--boxicons link-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+
+    <!--remixicons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo"><img src="logo.png" id="logo-img" /></a>
+      <ul class="navlist" id="navlist">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+
+      <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h5>#2 Trending</h5>
+        <h4>Lead Supercell</h4>
+        <h1>GOBLINS</h1>
+        <p>
+          Join Millions of players worldwide as you build your
+          <br />
+          village, raise a clan, and compete in epic Clan Wars!!
+        </p>
+
+        <a href="index.html">Generate New</a>
+        <a href="viewmemes.html" class="ctaa"
+          ><i class="ri-play-fill"></i>View Your Memes</a
+        >
+      </div>
+      <div class="hero-img">
+        <img
+          src="476ed502196619e6b8e9ebbc10349cf1-removebg-preview.png"
+          alt="landing-page image"
+        />
+      </div>
+    </section>
+
+    <script>
+      const menuButton = document.getElementById("menu-icon");
+      const navList = document.getElementById("navlist");
+
+      menuButton.addEventListener("click", () => {
+        navList.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>

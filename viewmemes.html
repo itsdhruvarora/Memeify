@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="memes-list"></div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const memesList = document.getElementById("memes-list");
+
+        // Retrieve the saved memes array from localStorage
+        const savedMemes = JSON.parse(localStorage.getItem("savedMemes"));
+
+        if (savedMemes && savedMemes.length > 0) {
+          // Iterate through the array and create a display for each meme
+          savedMemes.forEach((meme, index) => {
+            const memeElement = document.createElement("div");
+            const imageElement = document.createElement("img");
+            imageElement.src = meme.imageUrl;
+            memeElement.appendChild(imageElement);
+
+            meme.captions.forEach((caption, captionIndex) => {
+              const captionInput = document.createElement("input");
+              captionInput.value = caption;
+              memeElement.appendChild(captionInput);
+            });
+
+            // Create buttons for update and delete
+            const updateButton = document.createElement("button");
+            updateButton.textContent = "Update Meme";
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete Meme";
+
+            // Add event listeners for update and delete actions
+            updateButton.addEventListener("click", function () {
+              // Implement update functionality
+              // Allow users to edit captions and save the updated data to the savedMemes array
+              // Then, save the updated array back to localStorage
+            });
+
+            deleteButton.addEventListener("click", function () {
+              savedMemes.splice(index, 1);
+              localStorage.setItem("savedMemes", JSON.stringify(savedMemes));
+              memeElement.remove();
+            });
+
+            memeElement.appendChild(updateButton);
+            memeElement.appendChild(deleteButton);
+
+            memesList.appendChild(memeElement);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

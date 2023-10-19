@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imgflip API Example</title>
+    <style>
+      #memes-container {
+        justify-content: center;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+      .meme-container {
+        text-align: center;
+      }
+      .meme-container img {
+        border: 10px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="home.html"> click here </a>
+    <div id="memes-container"></div>
+
+    <script>
+      function fetchMemes() {
+        const apiUrl = "https://api.imgflip.com/get_memes";
+
+        fetch(apiUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            displayMemes(data);
+          })
+          .catch((error) => {
+            console.error("Error fetching data: ", error);
+          });
+      }
+
+      function displayMemes(data) {
+        const memes = data.data.memes;
+        const memesContainer = document.getElementById("memes-container");
+
+        memes.forEach((meme) => {
+          const memeLink = document.createElement("a");
+          const memeContainer = document.createElement("div");
+          const memeImage = document.createElement("img");
+          const memeText = document.createElement("p");
+
+          memeLink.href =
+            "memeGen.html?url=" +
+            meme.url +
+            "&id=" +
+            meme.id +
+            "&boxCount=" +
+            meme.box_count;
+          memeImage.src = meme.url;
+          memeImage.alt = meme.name;
+          memeImage.height = 300;
+          memeImage.width = 400;
+
+          memeText.textContent = meme.name;
+
+          memeContainer.className = "meme-container";
+
+          memeContainer.appendChild(memeImage);
+          memeContainer.appendChild(memeText);
+
+          memeLink.appendChild(memeContainer);
+          memesContainer.appendChild(memeLink);
+        });
+      }
+
+      fetchMemes();
+    </script>
+  </body>
+</html>
