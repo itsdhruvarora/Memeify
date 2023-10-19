@@ -21,7 +21,7 @@ header {
 }
 
 #logo-img {
-  height: 120px;
+  height: 100px;
   width: auto;
   float: left;
 }
@@ -217,7 +217,7 @@ section {
 
   .navlist a {
     margin-left: 0;
-    display: block;
+    display: flex;
     margin: 7px 0;
   }
 
@@ -237,4 +237,40 @@ section {
     width: 100%;
     height: auto;
   }
+}
+
+/* choose page */
+
+#meme-section {
+  box-sizing: border-box;
+  padding: 0 0 0 0px;
+  background: linear-gradient(
+    245.59deg,
+    #4d9558 0%,
+    #38703d 28.53%,
+    #133917 75.52%
+  );
+}
+
+#memes-container-text {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+  font-family: cursive;
+  padding-bottom: 40px;
+}
+
+#memes-container {
+  justify-content: center;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.meme-container {
+  text-align: center;
+  font-size: 20px;
+  color: rgb(235, 240, 240);
+}
+.meme-container img {
+  border: 10px solid rgb(69, 63, 63);
 }
