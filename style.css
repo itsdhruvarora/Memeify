@@ -21,8 +21,8 @@ header {
 }
 
 #logo-img {
-  height: 100px;
-  width: auto;
+  height: 70px;
+  width: 400px;
   float: left;
 }
 
@@ -72,7 +72,7 @@ header {
 }
 
 section {
-  padding: 0 8%;
+  padding: 0 19%;
 }
 
 .hero-text h5 {
@@ -217,18 +217,12 @@ section {
 
   .navlist a {
     margin-left: 0;
-    display: flex;
+    display: block;
     margin: 7px 0;
   }
 
   .navlist.open {
     display: none;
-  }
-
-  #logo-img {
-    padding-bottom: 40px;
-
-    /* width: auto; */
   }
 }
 
@@ -266,11 +260,13 @@ section {
   gap: 15px;
   flex-wrap: wrap;
 }
+
 .meme-container {
   text-align: center;
   font-size: 20px;
   color: rgb(235, 240, 240);
 }
+
 .meme-container img {
   border: 10px solid rgb(69, 63, 63);
 }

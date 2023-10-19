@@ -3,26 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Imgflip API Example</title>
-    <style>
-      #memes-container {
-        justify-content: center;
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-      }
-      .meme-container {
-        text-align: center;
-      }
-      .meme-container img {
-        border: 10px solid black;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <!--boxicons link-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+
+    <!--remixicons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <title>Create a meme - Memeify</title>
   </head>
   <body>
-    <a href="home.html"> click here </a>
-    <div id="memes-container"></div>
+    <section id="meme-section">
+      <header style="position: relative">
+        <a href="#" class="logo"><img src="logo.png" id="logo-img" /></a>
+        <ul class="navlist" id="navlist">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
 
+        <div class="bx bx-menu" id="menu-icon"></div>
+      </header>
+      <h1 id="memes-container-text">
+        Choose from 100+ most widely used templates
+      </h1>
+      <div id="memes-container"></div>
+    </section>
     <script>
       function fetchMemes() {
         const apiUrl = "https://api.imgflip.com/get_memes";
@@ -70,8 +81,13 @@
           memesContainer.appendChild(memeLink);
         });
       }
-
       fetchMemes();
+      const menuButton = document.getElementById("menu-icon");
+      const navList = document.getElementById("navlist");
+
+      menuButton.addEventListener("click", () => {
+        navList.classList.toggle("open");
+      });
     </script>
   </body>
 </html>

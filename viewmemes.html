@@ -3,54 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>View Page</title>
+    <style>
+      #memes-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+
+      .meme-card {
+        border: 10px solid black;
+        padding: 10px;
+        text-align: center;
+        height: auto;
+        width: 450px;
+      }
+
+      img {
+        height: 300px;
+        width: 300px;
+      }
+
+      .caption-input {
+        width: 100%;
+        margin: 5px 0;
+      }
+
+      .action-buttons {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .action-buttons button {
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
+    <h1>Welcome to the View Page</h1>
     <div id="memes-list"></div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const memesList = document.getElementById("memes-list");
 
         // Retrieve the saved memes array from localStorage
-        const savedMemes = JSON.parse(localStorage.getItem("savedMemes"));
+        const savedMemes = JSON.parse(localStorage.getItem("savedMemes")) || [];
 
-        if (savedMemes && savedMemes.length > 0) {
-          // Iterate through the array and create a display for each meme
+        if (savedMemes.length === 0) {
+          // If no saved memes, display a message
+          const noMemesMessage = document.createElement("p");
+          noMemesMessage.textContent =
+            "Oops! You don't have any saved memes in localStorage.";
+          memesList.appendChild(noMemesMessage);
+        } else {
+          // Iterate through the saved memes and create a display for each meme
           savedMemes.forEach((meme, index) => {
-            const memeElement = document.createElement("div");
+            const memeCard = document.createElement("div");
+            memeCard.classList.add("meme-card");
+
             const imageElement = document.createElement("img");
             imageElement.src = meme.imageUrl;
-            memeElement.appendChild(imageElement);
+
+            memeCard.appendChild(imageElement);
 
             meme.captions.forEach((caption, captionIndex) => {
               const captionInput = document.createElement("input");
               captionInput.value = caption;
-              memeElement.appendChild(captionInput);
+              captionInput.classList.add("caption-input");
+              memeCard.appendChild(captionInput);
             });
 
             // Create buttons for update and delete
+            const actionButtons = document.createElement("div");
+            actionButtons.classList.add("action-buttons");
+
             const updateButton = document.createElement("button");
             updateButton.textContent = "Update Meme";
-            const deleteButton = document.createElement("button");
-            deleteButton.textContent = "Delete Meme";
-
-            // Add event listeners for update and delete actions
             updateButton.addEventListener("click", function () {
-              // Implement update functionality
+              // Implement the update functionality here
               // Allow users to edit captions and save the updated data to the savedMemes array
               // Then, save the updated array back to localStorage
             });
 
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete Meme";
             deleteButton.addEventListener("click", function () {
               savedMemes.splice(index, 1);
               localStorage.setItem("savedMemes", JSON.stringify(savedMemes));
-              memeElement.remove();
+              memeCard.remove();
+              location.reload();
             });
 
-            memeElement.appendChild(updateButton);
-            memeElement.appendChild(deleteButton);
+            actionButtons.appendChild(updateButton);
+            actionButtons.appendChild(deleteButton);
 
-            memesList.appendChild(memeElement);
+            memeCard.appendChild(actionButtons);
+
+            memesList.appendChild(memeCard);
           });
         }
       });

@@ -4,10 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="data:;base64,iVBORw0KGgo=" />
+    <!--boxicons link-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
 
+    <!--remixicons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Meme Generator</title>
     <style>
       body {
+        background: linear-gradient(
+          245.59deg,
+          #4d9558 0%,
+          #38703d 28.53%,
+          #133917 75.52%
+        );
+      }
+      section {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -22,10 +41,11 @@
         gap: 10px;
       }
 
-      img {
+      #meme-image {
         max-width: 100%;
         max-height: 70vh;
-        border: 10px solid black;
+        border: 10px solid white;
+        margin-top: 60px;
       }
 
       #text-boxes {
@@ -37,24 +57,59 @@
       input {
         margin: 5px;
         padding: 5px;
+        border: 2px solid #3498db;
+        border-radius: 5px;
+        outline: none;
+        height: auto;
+        width: auto;
       }
 
       button {
         margin: 20px 0;
+        padding: 20px 20px;
+        background-color: #3498db; /* Button background color */
+        color: white; /* Button text color */
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 30px;
+      }
+
+      #view-work-button {
+        background-color: #27ae60; /* Custom color for the new button */
+        padding: 20px;
       }
     </style>
   </head>
   <body>
-    <div id="meme-container">
-      <img id="meme-image" src="" alt="Meme" />
-      <form id="text-form">
-        <div id="text-boxes"></div>
-        <button type="submit">Generate Meme</button>
-        <button id="save-button">Save Meme</button>
-      </form>
-    </div>
+    <header>
+      <a href="#" class="logo"><img src="logo.png" id="logo-img" /></a>
+      <ul class="navlist" id="navlist">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
 
+      <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+    <section>
+      <div id="meme-container">
+        <img id="meme-image" src="" alt="Meme" />
+        <form id="text-form">
+          <div id="text-boxes"></div>
+          <button type="submit">Generate Meme</button>
+          <button id="save-button">Save Meme</button>
+          <button id="view-work-button">View Your Work</button>
+        </form>
+      </div>
+    </section>
     <script>
+      const menuButton = document.getElementById("menu-icon");
+      const navList = document.getElementById("navlist");
+
+      menuButton.addEventListener("click", () => {
+        navList.classList.toggle("open");
+      });
       let clicked = false;
       const urlParams = new URLSearchParams(window.location.search);
       const id = urlParams.get("id");
@@ -101,9 +156,7 @@
             if (data.success) {
               memeImage.src = data.data.url;
             } else {
-              alert(
-                "Failed to generate meme. Check your credentials and try again."
-              );
+              alert("Please Enter Some Input");
             }
           })
           .catch((error) => {
@@ -116,7 +169,7 @@
       document
         .getElementById("save-button")
         .addEventListener("click", function () {
-          if (!clicked) alert("generate a meme first");
+          if (!clicked) alert("Generate a Meme First!");
           else {
             const imageUrl = document.getElementById("meme-image").src;
             const textInputs = document.querySelectorAll("#text-boxes input");
@@ -131,8 +184,16 @@
             savedMemes.push(newMeme);
 
             localStorage.setItem("savedMemes", JSON.stringify(savedMemes));
+            clicked = false;
+
             alert("Meme saved successfully!");
           }
+        });
+
+      document
+        .getElementById("view-work-button")
+        .addEventListener("click", function () {
+          window.location.href = "viewmemes.html";
         });
     </script>
   </body>
