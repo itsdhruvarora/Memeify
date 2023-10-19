@@ -44,7 +44,8 @@
   <body>
     <h1>Welcome to the View Page</h1>
     <div id="memes-list"></div>
-    <script>
+    <script src="scripts.js"></script>
+    <!-- <script>
       document.addEventListener("DOMContentLoaded", function () {
         const memesList = document.getElementById("memes-list");
 
@@ -82,9 +83,16 @@
             const updateButton = document.createElement("button");
             updateButton.textContent = "Update Meme";
             updateButton.addEventListener("click", function () {
-              // Implement the update functionality here
-              // Allow users to edit captions and save the updated data to the savedMemes array
-              // Then, save the updated array back to localStorage
+              const captionInputs = document.querySelectorAll(".caption-input");
+
+              const captionValues = [];
+
+              captionInputs.forEach(function (input) {
+                captionValues.push(input.value);
+              });
+
+              // The captionValues array now contains the values of all input boxes
+              console.log(captionValues);
             });
 
             const deleteButton = document.createElement("button");
@@ -105,6 +113,6 @@
           });
         }
       });
-    </script>
+    </script> -->
   </body>
 </html>
