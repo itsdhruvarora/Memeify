@@ -17,94 +17,31 @@
     />
     <link rel="stylesheet" href="style.css" />
     <title>Meme Generator</title>
-    <style>
-      body {
-        background: linear-gradient(
-          245.59deg,
-          #4d9558 0%,
-          #38703d 28.53%,
-          #133917 75.52%
-        );
-      }
-      section {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-      }
-
-      #meme-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-      }
-
-      #meme-image {
-        max-width: 100%;
-        max-height: 70vh;
-        border: 10px solid white;
-        margin-top: 60px;
-      }
-
-      #text-boxes {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      input {
-        margin: 5px;
-        padding: 5px;
-        border: 2px solid #3498db;
-        border-radius: 5px;
-        outline: none;
-        height: auto;
-        width: auto;
-      }
-
-      button {
-        margin: 20px 0;
-        padding: 20px 20px;
-        background-color: #3498db; /* Button background color */
-        color: white; /* Button text color */
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-left: 30px;
-      }
-
-      #view-work-button {
-        background-color: #27ae60; /* Custom color for the new button */
-        padding: 20px;
-      }
-    </style>
   </head>
   <body>
     <header>
-      <a href="#" class="logo"><img src="logo.png" id="logo-img" /></a>
+      <a href="#" class="logo"><img src="./assets/logo.png" id="logo-img" /></a>
       <ul class="navlist" id="navlist">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="chooseMeme.html">Generate</a></li>
+        <li><a href="viewmemes.html">View Your Work</a></li>
       </ul>
 
       <div class="bx bx-menu" id="menu-icon"></div>
     </header>
-    <section>
+    <section id="meme-gen-section">
       <div id="meme-container">
         <img id="meme-image" src="" alt="Meme" />
         <form id="text-form">
           <div id="text-boxes"></div>
-          <button type="submit">Generate Meme</button>
-          <button id="save-button">Save Meme</button>
-          <button id="view-work-button">View Your Work</button>
+          <button class="meme-gen-btn" type="submit">Generate Meme</button>
+          <button class="meme-gen-btn" id="save-button">Save Meme</button>
+          <button class="meme-gen-btn" id="view-work-button">
+            View Your Work
+          </button>
         </form>
       </div>
     </section>
     <script src="scripts.js"></script>
   </body>
 </html>
-
-

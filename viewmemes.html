@@ -4,115 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View Page</title>
-    <style>
-      #memes-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 40px;
-      }
+    <link rel="stylesheet" href="style.css" />
+    <!--boxicons link-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
 
-      .meme-card {
-        border: 10px solid black;
-        padding: 10px;
-        text-align: center;
-        height: auto;
-        width: 450px;
-      }
-
-      img {
-        height: 300px;
-        width: 300px;
-      }
-
-      .caption-input {
-        width: 100%;
-        margin: 5px 0;
-      }
-
-      .action-buttons {
-        display: flex;
-        justify-content: space-around;
-      }
-
-      .action-buttons button {
-        padding: 5px 10px;
-        font-size: 16px;
-        cursor: pointer;
-      }
-    </style>
+    <!--remixicons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Welcome to the View Page</h1>
+    <style>
+      body {
+        background: linear-gradient(
+          245.59deg,
+          #4d9558 0%,
+          #38703d 28.53%,
+          #133917 75.52%
+        );
+      }
+    </style>
+    <header style="position: relative">
+      <a href="#" class="logo"><img src="./assets/logo.png" id="logo-img" /></a>
+      <ul class="navlist" id="navlist">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="chooseMeme.html">Generate</a></li>
+        <li><a href="viewmemes.html">View Your Work</a></li>
+      </ul>
+
+      <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+    <h1 id="view-meme-text">Your Creations:</h1>
+    <section class="view-meme-hero">
+      <div class="view-meme-hero-text">
+        <h1>It's Empty Here :-(</h1>
+        <p>
+          Looks Like You haven't made any Memes Yet!
+          <br />
+          Great Things are always waiting to start.
+        </p>
+
+        <a href="chooseMeme.html" class="ctaa"
+          ><i class="ri-play-fill"></i>Generate Meme Now</a
+        >
+      </div>
+      <div class="view-meme-hero-img">
+        <img src="./assets/empty.webp" alt="landing-page image" />
+      </div>
+    </section>
     <div id="memes-list"></div>
     <script src="scripts.js"></script>
-    <!-- <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const memesList = document.getElementById("memes-list");
-
-        // Retrieve the saved memes array from localStorage
-        const savedMemes = JSON.parse(localStorage.getItem("savedMemes")) || [];
-
-        if (savedMemes.length === 0) {
-          // If no saved memes, display a message
-          const noMemesMessage = document.createElement("p");
-          noMemesMessage.textContent =
-            "Oops! You don't have any saved memes in localStorage.";
-          memesList.appendChild(noMemesMessage);
-        } else {
-          // Iterate through the saved memes and create a display for each meme
-          savedMemes.forEach((meme, index) => {
-            const memeCard = document.createElement("div");
-            memeCard.classList.add("meme-card");
-
-            const imageElement = document.createElement("img");
-            imageElement.src = meme.imageUrl;
-
-            memeCard.appendChild(imageElement);
-
-            meme.captions.forEach((caption, captionIndex) => {
-              const captionInput = document.createElement("input");
-              captionInput.value = caption;
-              captionInput.classList.add("caption-input");
-              memeCard.appendChild(captionInput);
-            });
-
-            // Create buttons for update and delete
-            const actionButtons = document.createElement("div");
-            actionButtons.classList.add("action-buttons");
-
-            const updateButton = document.createElement("button");
-            updateButton.textContent = "Update Meme";
-            updateButton.addEventListener("click", function () {
-              const captionInputs = document.querySelectorAll(".caption-input");
-
-              const captionValues = [];
-
-              captionInputs.forEach(function (input) {
-                captionValues.push(input.value);
-              });
-
-              // The captionValues array now contains the values of all input boxes
-              console.log(captionValues);
-            });
-
-            const deleteButton = document.createElement("button");
-            deleteButton.textContent = "Delete Meme";
-            deleteButton.addEventListener("click", function () {
-              savedMemes.splice(index, 1);
-              localStorage.setItem("savedMemes", JSON.stringify(savedMemes));
-              memeCard.remove();
-              location.reload();
-            });
-
-            actionButtons.appendChild(updateButton);
-            actionButtons.appendChild(deleteButton);
-
-            memeCard.appendChild(actionButtons);
-
-            memesList.appendChild(memeCard);
-          });
-        }
-      });
-    </script> -->
   </body>
 </html>

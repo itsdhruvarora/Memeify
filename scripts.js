@@ -17,10 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (savedMemes.length === 0) {
     // If no saved memes, display a message
-    const noMemesMessage = document.createElement("p");
-    noMemesMessage.textContent =
-      "Oops! You don't have any saved memes in localStorage.";
-    memesList.appendChild(noMemesMessage);
+    const memeHero = document.getElementsByClassName("view-meme-hero")[0];
+    memeHero.classList.add("show");
   } else {
     // Iterate through the saved memes and create a display for each meme
     savedMemes.forEach((meme, index) => {
@@ -104,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
 // ██╗░░██╗░█████╗░███╗░░░███╗███████╗
 // ██║░░██║██╔══██╗████╗░████║██╔════╝
 // ███████║██║░░██║██╔████╔██║█████╗░░
@@ -115,7 +114,11 @@ const menuButton = document.getElementById("menu-icon");
 const navList = document.getElementById("navlist");
 
 menuButton.addEventListener("click", () => {
-  navList.classList.toggle("open");
+  if (navList.classList.contains("open")) {
+    navList.classList.remove("open");
+  } else {
+    navList.classList.add("open");
+  }
 });
 
 // ░█████╗░██╗░░██╗░█████╗░██╗░█████╗░███████╗
@@ -179,18 +182,17 @@ fetchMemes();
 // ██║░░╚██╗██╔══╝░░██║╚████║██╔══╝░░██╔══██╗██╔══██║░░░██║░░░██╔══╝░░  ██╔═══╝░██╔══██║██║░░╚██╗██╔══╝░░
 // ╚██████╔╝███████╗██║░╚███║███████╗██║░░██║██║░░██║░░░██║░░░███████╗  ██║░░░░░██║░░██║╚██████╔╝███████╗
 // ░╚═════╝░╚══════╝╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚══════╝  ╚═╝░░░░░╚═╝░░╚═╝░╚═════╝░╚══════╝
-
-menuButton.addEventListener("click", () => {
-  navList.classList.toggle("open");
-});
 let clicked = false;
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
-
-console.log(id);
+console.log(urlParams);
 const imageUrl = urlParams.get("url");
 const boxCount = parseInt(urlParams.get("boxCount"));
-
+if (window.location.pathname.endsWith("memeGen.html")) {
+  if (!id || !imageUrl) {
+    window.location.href = "choosememe.html";
+  }
+}
 const memeImage = document.getElementById("meme-image");
 memeImage.src = imageUrl;
 

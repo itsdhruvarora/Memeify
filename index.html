@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memeify - Meme Generator</title>
+    <!--CSS-->
     <link rel="stylesheet" href="style.css" />
     <!--boxicons link-->
     <link
@@ -15,24 +17,45 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <title>Create a meme - Memeify</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <section id="meme-section">
-      <header style="position: relative">
-        <a href="#" class="logo"><img src="logo.png" id="logo-img" /></a>
-        <ul class="navlist" id="navlist">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
+    <header>
+      <a href="#" class="logo"><img src="./assets/logo.png" id="logo-img" /></a>
+      <ul class="navlist" id="navlist">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="chooseMeme.html">Generate</a></li>
+        <li><a href="viewmemes.html">View Your Work</a></li>
+      </ul>
 
-        <div class="bx bx-menu" id="menu-icon"></div>
-      </header>
-      <h1 id="memes-container-text">
-        Choose from 100+ most widely used templates
-      </h1>
-      <div id="memes-container"></div>
+      <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Meme Magic Unleashed!</h1>
+        <p>
+          Create, Share, Laugh. Endless Fun, One Click Away!
+          <br />
+          Turn Your Ideas into Memes with over 100 meme templates! No sign-up
+          required.
+        </p>
+
+        <a href="chooseMeme.html">Generate New</a>
+        <a href="viewmemes.html" class="ctaa"><i class="ri-play-fill"></i>View Your Memes</a>
+      </div>
+      <div class="hero-img">
+        <img
+          src="./assets/476ed502196619e6b8e9ebbc10349cf1-removebg-preview.png"
+          alt="landing-page image"
+        />
+      </div>
     </section>
     <script src="scripts.js"></script>
   </body>
