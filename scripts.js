@@ -182,6 +182,7 @@ fetchMemes();
 // ██║░░╚██╗██╔══╝░░██║╚████║██╔══╝░░██╔══██╗██╔══██║░░░██║░░░██╔══╝░░  ██╔═══╝░██╔══██║██║░░╚██╗██╔══╝░░
 // ╚██████╔╝███████╗██║░╚███║███████╗██║░░██║██║░░██║░░░██║░░░███████╗  ██║░░░░░██║░░██║╚██████╔╝███████╗
 // ░╚═════╝░╚══════╝╚═╝░░╚══╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚══════╝  ╚═╝░░░░░╚═╝░░╚═╝░╚═════╝░╚══════╝
+
 let clicked = false;
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
@@ -208,40 +209,42 @@ for (let i = 1; i <= boxCount; i++) {
 
 textForm.addEventListener("submit", function (event) {
   event.preventDefault();
-
   // Gather text inputs from the user
-  clicked = true;
   const textInputs = document.querySelectorAll("#text-boxes input");
   const captions = Array.from(textInputs).map((input) => input.value);
-
+  if (captions[0] === "") alert("Please Enter input");
   // Call the Imgflip API to generate the meme
-  fetch(
-    `https://api.imgflip.com/caption_image?template_id=${id}&username=DHRUVARORA1&password=674022sd&boxes[0][text]=${captions[0]}&boxes[1][text]=${captions[1]}&boxes[2][text]=${captions[2]}&boxes[3][text]=${captions[3]}&boxes[4][text]=${captions[4]}`,
-    {
-      method: "POST",
-    }
-  )
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+  else {
+    fetch(
+      `https://api.imgflip.com/caption_image?template_id=${id}&username=DHRUVARORA1&password=674022sd&boxes[0][text]=${captions[0]}&boxes[1][text]=${captions[1]}&boxes[2][text]=${captions[2]}&boxes[3][text]=${captions[3]}&boxes[4][text]=${captions[4]}`,
+      {
+        method: "POST",
       }
-      return response.json();
-    })
-    .then((data) => {
-      if (data.success) {
-        memeImage.src = data.data.url;
-      } else {
-        alert("Please Enter Some Input");
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      alert(
-        "An error occurred while generating the meme. Please try again later."
-      );
-    });
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.success) {
+          memeImage.src = data.data.url;
+        } else {
+          alert("Please Enter Some Input");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(
+          "An error occurred while generating the meme. Please try again later."
+        );
+      });
+    clicked = true;
+  }
 });
 document.getElementById("save-button").addEventListener("click", function () {
+  event.preventDefault();
   if (!clicked) alert("Generate a Meme First!");
   else {
     const imageUrl = document.getElementById("meme-image").src;
@@ -271,4 +274,4 @@ document
     window.location.href = "viewmemes.html";
   });
 
-//
+
