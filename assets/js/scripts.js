@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
           (input) => input.value
         );
         const memeId = savedMemes[index].id;
-        console.log(captionValues[0]);
-        console.log(captionValues[4]);
+        // console.log(captionValues[0]);
+        // console.log(captionValues[4]);
 
         // Call the Imgflip API to update the meme with new captions
         fetch(
@@ -158,6 +158,7 @@ function displayMemes(data) {
       meme.id +
       "&boxCount=" +
       meme.box_count;
+
     memeImage.src = meme.url;
     memeImage.alt = meme.name;
     memeImage.height = 300;
@@ -271,7 +272,6 @@ document.getElementById("save-button").addEventListener("click", function () {
 document
   .getElementById("view-work-button")
   .addEventListener("click", function () {
+    event.preventDefault();
     window.location.href = "viewmemes.html";
   });
-
-
