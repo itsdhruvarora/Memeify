@@ -82,5 +82,3 @@ Contributions to this project are welcome. Here's how you can get involved:
 ```bash
 This project is licensed under the MIT License - see the LICENSE file for details
 ```
-
-.
